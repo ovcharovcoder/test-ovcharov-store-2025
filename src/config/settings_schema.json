@@ -98,7 +98,7 @@
   "settings": [
     {
       "type": "select",
-      "id": "accordion_behavior",  // Тепер це унікальний ID
+      "id": "accordion_behavior", 
       "label": "Accordion Behavior",
       "options": [
         {
