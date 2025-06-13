@@ -90,26 +90,4 @@
     ]
   }
   
-// Product Accordion
- {
-  "name": "Product Accordion Settings",
-  "settings": [
-    {
-      "type": "select",
-      "id": "accordion_behavior", 
-      "label": "Accordion Behavior",
-      "options": [
-        {
-          "value": "single",
-          "label": "Only one item open"
-        },
-        {
-          "value": "multiple",
-          "label": "Multiple items can be open"
-        }
-      ],
-      "default": "single"
-    }
-  ]
-},  
 
