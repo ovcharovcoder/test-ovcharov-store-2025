@@ -1,0 +1,173 @@
+{%- assign product = product | default: all_products[section.settings.product] -%}
+{%- assign images = product.images -%}
+{%- assign variants = product.variants -%}
+
+<div class="swiper-gallery" data-section-id="{{ section.id }}">
+  <!-- Color selector -->
+  <div class="color-selector">
+    {% for option in product.options_with_values %}
+      {% if option.name == 'Color' %}
+        {% for value in option.values %}
+          <button 
+            class="color-swatch {% if forloop.first %}active{% endif %}" 
+            data-color="{{ value | handleize }}"
+            style="background-color: {{ value | handleize }};"
+            aria-label="Select color {{ value }}"
+          ></button>
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <!-- Swiper container -->
+  <div class="swiper-container gallery-top">
+    <div class="swiper-wrapper">
+      {% for image in images %}
+        {% assign image_color = '' %}
+        {% for variant in variants %}
+          {% if variant.image and variant.image.id == image.id %}
+            {% assign image_color = variant.option1 | handleize %}
+          {% endif %}
+        {% endfor %}
+        
+        <div class="swiper-slide" 
+             data-color="{{ image_color | default: 'all' }}"
+             {% if image_color != blank %}data-color="{{ image_color }}"{% endif %}>
+          <img src="{{ image | img_url: '800x' }}" 
+               alt="{{ image.alt | escape }}" 
+               class="swiper-lazy"
+               loading="lazy">
+          <div class="swiper-lazy-preloader"></div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Navigation arrows -->
+    {% if section.settings.show_navigation %}
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    {% endif %}
+
+    <!-- Pagination -->
+    {% if section.settings.show_pagination %}
+      <div class="swiper-pagination"></div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .swiper-gallery {
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .color-selector {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+  }
+  
+  .color-swatch {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .color-swatch.active {
+    border-color: #000;
+    transform: scale(1.1);
+  }
+  
+  .swiper-container {
+    width: 100%;
+    height: auto;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .swiper-slide img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .swiper-button-next, .swiper-button-prev {
+    color: #000;
+  }
+  
+  @media (max-width: 768px) {
+    .swiper-button-next, .swiper-button-prev {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const sectionId = '{{ section.id }}';
+    const container = document.querySelector(`.swiper-gallery[data-section-id="${sectionId}"]`);
+    
+    if (!container) return;
+    
+    // Initialize Swiper
+    const swiper = new Swiper(container.querySelector('.swiper-container'), {
+      slidesPerView: {{ section.settings.slides_per_view_desktop }},
+      spaceBetween: {{ section.settings.space_between }},
+      navigation: {
+        nextEl: container.querySelector('.swiper-button-next'),
+        prevEl: container.querySelector('.swiper-button-prev'),
+      },
+      pagination: {
+        el: container.querySelector('.swiper-pagination'),
+        clickable: true,
+      },
+      lazy: true,
+      breakpoints: {
+        640: {
+          slidesPerView: {{ section.settings.slides_per_view_mobile }},
+          spaceBetween: {{ section.settings.space_between_mobile }},
+        },
+        1024: {
+          slidesPerView: {{ section.settings.slides_per_view_tablet }},
+          spaceBetween: {{ section.settings.space_between_tablet }},
+        }
+      }
+    });
+    
+    // Color filtering
+    const colorSwatches = container.querySelectorAll('.color-swatch');
+    colorSwatches.forEach(swatch => {
+      swatch.addEventListener('click', function() {
+        const color = this.dataset.color;
+        
+        // Update active state
+        colorSwatches.forEach(s => s.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Filter slides
+        const slides = container.querySelectorAll('.swiper-slide');
+        slides.forEach(slide => {
+          const slideColor = slide.dataset.color;
+          if (color === 'all' || slideColor === color) {
+            slide.style.display = '';
+          } else {
+            slide.style.display = 'none';
+          }
+        });
+        
+        // Update Swiper
+        swiper.update();
+      });
+    });
+  });
+</script>
