@@ -1,0 +1,9 @@
+{% comment %} Add swiper.css to <head> {% endcomment %}
+
+  {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+  
+  
+  
+{% comment %} Add swiper.js before </body> {% endcomment %}
+  
+   {{ 'swiper-bundle.min.js' | asset_url | script_tag }}
