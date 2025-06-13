@@ -1,1 +1,117 @@
+// Swiper Gallery
+  
+  
+  {
+    "name": "Swiper Gallery Settings",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Desktop Settings"
+      },
+      {
+        "type": "range",
+        "id": "slides_per_view_desktop",
+        "label": "Slides per view (Desktop)",
+        "min": 1,
+        "max": 5,
+        "step": 1,
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "space_between",
+        "label": "Space between slides (Desktop)",
+        "min": 0,
+        "max": 50,
+        "step": 5,
+        "default": 20,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Tablet Settings"
+      },
+      {
+        "type": "range",
+        "id": "slides_per_view_tablet",
+        "label": "Slides per view (Tablet)",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "default": 2
+      },
+      {
+        "type": "range",
+        "id": "space_between_tablet",
+        "label": "Space between slides (Tablet)",
+        "min": 0,
+        "max": 30,
+        "step": 5,
+        "default": 15,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Mobile Settings"
+      },
+      {
+        "type": "range",
+        "id": "slides_per_view_mobile",
+        "label": "Slides per view (Mobile)",
+        "min": 1,
+        "max": 3,
+        "step": 1,
+        "default": 1
+      },
+      {
+        "type": "range",
+        "id": "space_between_mobile",
+        "label": "Space between slides (Mobile)",
+        "min": 0,
+        "max": 20,
+        "step": 5,
+        "default": 10,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Navigation Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_navigation",
+        "label": "Show navigation arrows",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_pagination",
+        "label": "Show pagination dots",
+        "default": true
+      },
+    ]
+  }
+  
+// Product Accordion
+ {
+  "name": "Product Accordion Settings",
+  "settings": [
+    {
+      "type": "select",
+      "id": "accordion_behavior",  // Тепер це унікальний ID
+      "label": "Accordion Behavior",
+      "options": [
+        {
+          "value": "single",
+          "label": "Only one item open"
+        },
+        {
+          "value": "multiple",
+          "label": "Multiple items can be open"
+        }
+      ],
+      "default": "single"
+    }
+  ]
+},  
 
