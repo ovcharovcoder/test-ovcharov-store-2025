@@ -1,0 +1,13 @@
+...
+
+"accordion_yJ6gkP": {
+      "type": "accordion",
+      "name": "Accordion (Metafields)",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "accordion_yJ6gkP"
+  ]
+}
