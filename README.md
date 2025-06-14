@@ -1,4 +1,4 @@
-# test-ovcharov-store-2025
+# snippet swiper-gallery
 
 Source code for snippet swiper-gallery
 
