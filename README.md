@@ -1,6 +1,5 @@
-# Snippet Swiper Gallery and accordion via metafields for Shopify
+# Snippets for Swiper Gallery and Accordion using Shopify Metafields. Easily customizable and connected to product metafields for dynamic content
 
-Source code for snippet swiper-gallery
 
 [View snippet installation manuall](https://github.com/ovcharovcoder/test-ovcharov-store-2025/blob/main/Manual.pdf)
 
