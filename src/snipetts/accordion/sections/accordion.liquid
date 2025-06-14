@@ -1,0 +1,129 @@
+{% comment %}
+  Accordion Section: Titles & Descriptions from Metafields
+  - custom.accordion_titles_list: List of single line text
+  - custom.accordion_descriptions_list: List of single line text
+  - custom.allow_multiple_boolean: True/false
+{% endcomment %}
+
+{%- assign titles = product.metafields.custom.accordion_titles_list.value -%}
+{%- assign descriptions = product.metafields.custom.accordion_descriptions_list.value -%}
+{%- assign allow_multiple = product.metafields.custom.allow_multiple_boolean.value | default: false -%}
+
+{%- if titles and descriptions and titles.size > 0 and descriptions.size > 0 -%}
+  <style>
+    .accordion-wrapper {
+      width: 100%;
+      max-width: 100%;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid #ddd;
+      padding: 1rem 0;
+    }
+
+    .accordion-header {
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      font-size: 1.25rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color 0.3s ease;
+    }
+
+    .accordion-header:hover {
+      color: #0059ff;
+    }
+
+    .accordion-icon {
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .accordion-header[aria-expanded="true"] .accordion-icon {
+      transform: rotate(90deg);
+    }
+
+    .accordion-content {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.4s ease;
+    }
+
+    .accordion-content.open {
+      opacity: 1;
+      max-height: 500px;
+      margin-top: 0.5rem;
+    }
+  </style>
+
+  <div class="accordion-wrapper" data-allow-multiple="{{ allow_multiple }}">
+    {%- for title in titles -%}
+      {%- assign description = descriptions[forloop.index0] -%}
+      {%- if title != blank and description != blank -%}
+        <div class="accordion-item">
+          <button class="accordion-header" type="button" aria-expanded="false">
+            {{ title }}
+            <span class="accordion-icon">▶</span>
+          </button>
+          <div class="accordion-content">
+            <div>{{ description | newline_to_br }}</div>
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const wrapper = document.querySelector('.accordion-wrapper');
+      if (!wrapper) return;
+
+      const allowMultiple = wrapper.dataset.allowMultiple === 'true';
+      const items = wrapper.querySelectorAll('.accordion-item');
+
+      items.forEach((item) => {
+        const header = item.querySelector('.accordion-header');
+        const content = item.querySelector('.accordion-content');
+
+        header.addEventListener('click', () => {
+          const isOpen = header.getAttribute('aria-expanded') === 'true';
+
+          if (!allowMultiple) {
+            wrapper.querySelectorAll('.accordion-header').forEach((h) => h.setAttribute('aria-expanded', 'false'));
+            wrapper.querySelectorAll('.accordion-content').forEach((c) => c.classList.remove('open'));
+          }
+
+          header.setAttribute('aria-expanded', !isOpen);
+          content.classList.toggle('open', !isOpen);
+        });
+      });
+    });
+  </script>
+{%- else -%}
+  <div style="padding: 1rem; background: #fff3cd; border-left: 4px solid #ffeeba;">
+    ⚠️ Accordion не може бути показаний:<br>
+    {% if titles == blank %}⛔️ <code>accordion_titles_list</code> порожній або не заданий<br>{% endif %}
+    {% if descriptions == blank %}⛔️ <code>accordion_descriptions_list</code> порожній або не заданий<br>{% endif %}
+    🧪 Перевір метафілди у продукті
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Accordion (Metafields)",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Accordion (Metafields)"
+    }
+  ]
+}
+{% endschema %}
