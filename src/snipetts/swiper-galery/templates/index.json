@@ -1,5 +1,5 @@
 
-"swiper_gallery_mGeHg6": {
+"swiper_gallery": {
       "type": "swiper-gallery",
       "settings": {
         "product": "apple-iphone-12-128gb",
@@ -15,7 +15,7 @@
     }
   },
   "order": [
-    "swiper_gallery_mGeHg6"
+    "swiper_gallery"
   ]
 }
 
