@@ -13,6 +13,9 @@
         "show_pagination": true
       }
     },
+
+...
+
   "order": [
     "swiper-gallery"
   ]
