@@ -1,7 +1,17 @@
 
-    "swiper-gallery": {
+     "swiper-gallery": {
       "type": "swiper-gallery",
-      "settings": {}
+      "settings": {
+        "product": "",
+        "slides_per_view_desktop": 4,
+        "space_between": 20,
+        "slides_per_view_tablet": 3,
+        "space_between_tablet": 15,
+        "slides_per_view_mobile": 1,
+        "space_between_mobile": 10,
+        "show_navigation": true,
+        "show_pagination": true
+      }
     },
   "order": [
     "swiper-gallery"
