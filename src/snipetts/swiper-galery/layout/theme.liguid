@@ -1,6 +1,19 @@
 {% comment %} Add swiper.css to <head> {% endcomment %}
 
  {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+
+...
+
+  <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+... 
+
+
+{%- if settings.animations_reveal_on_scroll -%}
+      <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
   
   
   
