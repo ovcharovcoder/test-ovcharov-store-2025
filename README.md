@@ -2,7 +2,7 @@
 Easily customizable and connected to product metafields for dynamic content
 
 
-[View snippet installation manuall](https://github.com/ovcharovcoder/test-ovcharov-store-2025/blob/main/Manual.pdf)
+[View snippet swiper-gallery installation manuall](https://github.com/ovcharovcoder/test-ovcharov-store-2025/blob/main/Manual.pdf)
 
 **swiper gallery**
 <img src="swiper-gallery.png" alt="swiper gallery">
