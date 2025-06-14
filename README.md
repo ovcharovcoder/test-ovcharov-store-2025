@@ -1,4 +1,4 @@
-# snippet Swiper gallery
+# snippet Swiper gallery for Shopify
 
 Source code for snippet swiper-gallery
 
