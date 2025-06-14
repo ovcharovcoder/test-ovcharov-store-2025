@@ -6,4 +6,6 @@ Source code for snippet swiper-gallery
 
 <img src="swiper-gallery.png" alt="swiper gallery">
 
+<img src="accordion.png" alt="accordion">
+
 
