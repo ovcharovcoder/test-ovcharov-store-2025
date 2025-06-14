@@ -7,7 +7,7 @@ Source code for snippet swiper-gallery
 **swiper gallery**
 <img src="swiper-gallery.png" alt="swiper gallery">
 
-**accordion**
+**accordion via metafields**
 <img src="accordion.png" alt="accordion">
 
 
