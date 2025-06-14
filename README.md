@@ -1,4 +1,4 @@
-# snippet swiper-gallery
+# snippet Swiper gallery
 
 Source code for snippet swiper-gallery
 
