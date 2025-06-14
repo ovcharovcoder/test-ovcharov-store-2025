@@ -1,4 +1,4 @@
-# Snippet Swiper Gallery for Shopify and accordion via metafields
+# Snippet Swiper Gallery and accordion via metafields for Shopify
 
 Source code for snippet swiper-gallery
 
