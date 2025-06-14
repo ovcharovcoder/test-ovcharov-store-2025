@@ -1,6 +1,6 @@
 {% comment %} Add swiper.css to <head> {% endcomment %}
 
-  {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+ {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
   
   
   
