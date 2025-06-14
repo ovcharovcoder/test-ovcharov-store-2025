@@ -1,18 +1,21 @@
 
-    "swiper_gallery": {
+"swiper_gallery_mGeHg6": {
       "type": "swiper-gallery",
-      "name": "Swiper Gallery",
       "settings": {
         "product": "apple-iphone-12-128gb",
-        "slides_per_view": 2,
+        "slides_per_view_desktop": 3,
+        "space_between": 15,
         "slides_per_view_tablet": 2,
-        "slides_per_view_desktop": 4,
-        "space_between": 30,
+        "space_between_tablet": 15,
+        "slides_per_view_mobile": 1,
+        "space_between_mobile": 10,
         "show_navigation": true,
         "show_pagination": true
       }
+    }
   },
   "order": [
-    "swiper_gallery"
+    "swiper_gallery_mGeHg6"
   ]
+}
 
